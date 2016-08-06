@@ -1,0 +1,15 @@
+<h1> URL Expander </h1>
+<form action="{% url 'url_add' %}" method="POST">
+	{% csrf_token %}
+	<label for="input">Enter a url: </label>
+	<input id="input" type="text" type="text" name="origin">
+	<input type="submit" value="Submit">
+</form>
+
+<h2>Expanded URLs</h2>
+  <ul>
+    {% for url in urls %}
+      <li><a href="{%  url 'url_detail' url.pk %}">Details for: {{ url.origin}}</a> <a href="{% url 'url_delete' url.pk %}">Delete</a></li>
+    {% endfor %}
+  </ul>
+
